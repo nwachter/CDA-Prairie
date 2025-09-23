@@ -1,9 +1,9 @@
 class Node {
-  value: string;
+  name: string;
   neighbors: Map<Node, number>;
 
-  constructor(value: string) {
-    this.value = value;
+  constructor(name: string) {
+    this.name = name;
     this.neighbors = new Map();
   }
 
@@ -11,4 +11,4 @@ class Node {
     this.neighbors.set(node, distance);
   }
 }
-export { Node };
+export {Node} ;

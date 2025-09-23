@@ -1,8 +1,8 @@
-import { Node } from "./Node";
+import {Node} from "./Node";
 
-export interface nouvelleInstance{
-    position : { x: number, y : number }
-}
+// export interface nouvelleInstance{
+//     position : { x: number, y : number }
+// }
 
 // class Kaamelott {
 //     public id : string;
@@ -22,9 +22,10 @@ export interface nouvelleInstance{
 //     }
 // }
 
-class Kingdom {
-  nodes: Map<string, Node> = new Map(); //string is the name of the location, Node is the location object
+class Kaamelott { //Kingdom
+  nodes: Map<string, Node> = new Map(); //string : nom du lieu, Node : le noeud
 
+  //Ajoute un noeud s'il n'existe pas déjà
   addNode(name: string): Node {
     if (!this.nodes.has(name)) {
       this.nodes.set(name, new Node(name));
@@ -32,6 +33,8 @@ class Kingdom {
     return this.nodes.get(name)!;
   }
 
+  //Ajoute une "arête" entre deux noeuds avec une distance
+  //Chaque noeud représente un lieu (Kaamelott, Village, Forêt…). Un noeud doit savoir à quels autres noeuds il est connecté, et à quelle distance.
   addEdge(a: string, b: string, distance: number) {
     const nodeA = this.addNode(a);
     const nodeB = this.addNode(b);
@@ -40,3 +43,5 @@ class Kingdom {
   }
 
 }
+
+export  {Kaamelott};
