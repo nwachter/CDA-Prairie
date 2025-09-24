@@ -2,8 +2,8 @@ import { Node } from "./Node";
 class Kaamelott {
     nodes = new Map();
     grid = []; // Grille 2D de nodes
-    width = 40;
-    height = 32;
+    width = 10;
+    height = 10;
     arthurPosition = null;
     labyrinthEntrance = null;
 
@@ -12,48 +12,53 @@ class Kaamelott {
         this.placeLabyrinthEntrance(); // Place l'entrée aléatoirement
     }
 
+   
     // Initialise la grille avec des poids aléatoires
-    initializeGrid() {
-        for (let y = 0; y < this.height; y++) {
-            this.grid[y] = [];
-            for (let x = 0; x < this.width; x++) {
-                // Génère un poids aléatoire entre 1 et 10
-                const weight = Math.floor(Math.random() * 10) + 1;
-                const nodeName = `${x},${y}`;
-                const node = new Node(nodeName, x, y, weight);
+initializeGrid() {
+    // First, create all nodes
+    for (let y = 0; y < this.height; y++) {
+        this.grid[y] = [];
+        for (let x = 0; x < this.width; x++) {
+            // Génère un poids aléatoire entre 1 et 10
+            const weight = Math.floor(Math.random() * 10) + 1;
+            const nodeName = `${x},${y}`;
+            const node = new Node(nodeName, x, y, weight);
 
-                this.grid[y][x] = node;
-                this.nodes.set(nodeName, node);
-
-                // Connecte le node avec ses voisins (haut, bas, gauche, droite)
-                this.connectNeighbors(x, y);
-            }
+            this.grid[y][x] = node;
+            this.nodes.set(nodeName, node);
         }
     }
 
-
-
-    // Connecte un node avec ses voisins adjacents
-    connectNeighbors(x, y) {
-        const currentNode = this.grid[y][x];
-        const directions = [
-            { dx: 0, dy: -1 }, // haut
-            { dx: 0, dy: 1 },  // bas
-            { dx: -1, dy: 0 }, // gauche
-            { dx: 1, dy: 0 }   // droite
-        ];
-
-        directions.forEach(dir => {
-            const newX = x + dir.dx;
-            const newY = y + dir.dy;
-
-            if (this.isValidPosition(newX, newY) && this.grid[newY] && this.grid[newY][newX]) {
-                const neighborNode = this.grid[newY][newX];
-                // La distance est le poids du node de destination
-                currentNode.addNeighbor(neighborNode, neighborNode.weight);
-            }
-        });
+    // Then, connect neighbors after all nodes are created
+    for (let y = 0; y < this.height; y++) {
+        for (let x = 0; x < this.width; x++) {
+            this.connectNeighbors(x, y);
+        }
     }
+}
+
+// Connecte un node avec ses voisins adjacents
+connectNeighbors(x, y) {
+    const currentNode = this.grid[y][x];
+    const directions = [
+        { dx: 0, dy: -1 }, // haut
+        { dx: 0, dy: 1 },  // bas
+        { dx: -1, dy: 0 }, // gauche
+        { dx: 1, dy: 0 }   // droite
+    ];
+
+    directions.forEach(dir => {
+        const newX = x + dir.dx;
+        const newY = y + dir.dy;
+
+        if (this.isValidPosition(newX, newY)) {
+            const neighborNode = this.grid[newY][newX];
+            // La distance est le poids du node de destination
+            currentNode.addNeighbor(neighborNode, neighborNode.weight);
+        }
+    });
+}
+ 
 
     // Vérifie si une position est valide dans la grille
     isValidPosition(x, y) {
@@ -211,7 +216,7 @@ class Kaamelott {
 
         // Vérifie si un chemin a été trouvé
         if (path.length === 0 || path[0] !== this.arthurPosition) {
-            console.log("No path found between Arthur and the labyrinth entrance!");
+            console.log("Aucun chemin trouvé entre Arthur et l'entrée!");
             return [];
         }
 
