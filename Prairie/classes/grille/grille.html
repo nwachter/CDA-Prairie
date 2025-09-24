@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte 40x32</title>
+    <link rel="stylesheet" href="grille.css">
+</head>
+
+<body>
+    <h1>Carte 40x32</h1>
+
+    <div class="controls">
+        <select id="colorSelect">
+            <option value="1">Vert</option>
+            <option value="2">Jaune</option>
+            <option value="3">Bleu</option>
+            <option value="4">Orange</option>
+            <option value="5">Marron</option>
+        </select>
+        <button onclick="randomize()">Aléatoire</button>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="grille.js"></script>
+</body>
+
+</html>
