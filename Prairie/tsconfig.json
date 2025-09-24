@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "moduleResolution": "nodenext",
-    "module": "NodeNext",
-    "target": "ES2020",
-    "esModuleInterop": true
+    "target": "ES2020",              // code moderne mais supporté par tous les navigateurs récents
+    "module": "ESNext",              // important → génère des import/export
+    "moduleResolution": "node",      // résolution classique
+    "esModuleInterop": true,         // pour interopérer avec du CommonJS si besoin
   }
 }
