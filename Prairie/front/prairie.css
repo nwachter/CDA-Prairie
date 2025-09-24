@@ -1,11 +1,55 @@
 body {
-    width: 100%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: fantasy;
 }
 
 .container {
-    width: 80%;
+  width: 80%;
+  max-width: 1000px;
+  position: relative;
 }
 
 #carte {
-    width: 100%;
+  width: 100%;
+  border: 15px solid brown;
+  border-radius: 5%;
+  opacity: 0.5;
+}
+
+@font-face {
+  font-family: fantasy;
+  src: url(./assets/font/MedievalSharp-Regular.ttf);
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+#arthur {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  height: 100px;
+  width: 100px;
+  z-index: 2;
+}
+
+#labyrinthe {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  height: 100px;
+  width: 100px;
+}
+
+#camelot {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  height: 100px;
+  width: 100px;
 }
