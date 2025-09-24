@@ -1,4 +1,4 @@
-import Cell from "./Cell"
+import { Cell } from "./Cell"
 
 class Carte<T> {
   nodes: Map<T, Cell<T>> = new Map();
