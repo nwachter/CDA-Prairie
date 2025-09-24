@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "serve": "^14.2.5"
+  },
+  "scripts": {
+    "compile": "cd Prairie && tsc",
+    "serve": "cd Prairie && npx serve -l 3000 .",
+    "compile_serve": "npm run compile && npm run serve",
+    "clean": "cd Prairie && rm -rf dist"
+  },
+  "dependencies": {
+    "node": "^24.8.0"
+  }
+}

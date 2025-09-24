@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./prairie.css" />
+  <link rel="stylesheet" href="./grille.css" />
+  <!-- Paths are relative to /front folder now -->
+  <script src="../dist/front/prairie.js" type="module"></script>
+</head>
+
+<body>
+  <h1>Il était une fois</h1>
+  <section class="container">
+    <div class="controls">
+      <select id="colorSelect">
+        <option value="1">Vert</option>
+        <option value="2">Jaune</option>
+        <option value="3">Bleu</option>
+        <option value="4">Orange</option>
+        <option value="5">Marron</option>
+      </select>
+      <button id="randomizeBtn">Aléatoire</button>
+      <button id="startCourseBtn">En Course !</button> <!-- New button -->
+    </div>
+
+    <div id="map"></div>
+
+    <div>
+      <!-- Update image paths to be relative to /front -->
+      <img id="arthur" src="./assets/arthur.png" alt="arthur">
+      <img id="labyrinthe" src="./assets/entree_labyrinthe 1.png" alt="labyrinthe">
+      <img id="camelot" src="./assets/kaamelott 1.png" alt="camelot">
+    </div>
+  </section>
+</body>
+
+</html>

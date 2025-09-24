@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./front/prairie.css" />
+    <link rel="stylesheet" href="./front/grille.css" />
+    <script src="./dist/front/prairie.js" type="module"></script>
+</head>
+
+<body>
+    <h1>Il était une fois</h1>
+    <section class="container">
+        <!-- Map container with relative positioning -->
+        <div id="map-container" style="position: relative; display: inline-block;">
+            <!-- The grid map -->
+            <div id="map"></div>
+
+            <!-- Character images positioned absolutely within the map container -->
+            <img id="arthur" src="./front/assets/arthur.png" alt="arthur"
+                style="position: absolute; pointer-events: none; z-index: 10;">
+            <img id="labyrinthe" src="./front/assets/entree_labyrinthe 1.png" alt="labyrinthe"
+                style="position: absolute; pointer-events: none; z-index: 10;">
+            <img id="camelot" src="./front/assets/kaamelott 1.png" alt="camelot"
+                style="position: absolute; pointer-events: none; z-index: 10;">
+        </div>
+
+        <div class="controls">
+            <select id="colorSelect">
+                <option value="1">Vert</option>
+                <option value="2">Jaune</option>
+                <option value="3">Bleu</option>
+                <option value="4">Orange</option>
+                <option value="5">Marron</option>
+            </select>
+            <button id="randomizeBtn">Aléatoire</button>
+            <button id="startCourseBtn">En Course</button>
+        </div>
+    </section>
+</body>
+
+</html>

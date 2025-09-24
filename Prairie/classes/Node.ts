@@ -1,28 +1,31 @@
 
 
 class Node {
-    name;
-    neighbors = new Map();
-    x; // Coordonnée x dans la grille
-    y; // Coordonnée y dans la grille
-    weight; // Poids du terrain (difficulté)
+    name: string;
+    neighbors: Record<string, {node: Node, distance: number}> = {};
+    x: number; // Coordonnée x dans la grille
+    y: number; // Coordonnée y dans la grille
+    weight: number; // Poids du terrain (difficulté)
 
-    constructor(name, x = 0, y = 0, weight = 1) {
+    constructor(name: string, x: number = 0, y: number = 0, weight: number = 1) {
         this.name = name;
-        this.neighbors = new Map();
+        this.neighbors = {};
         this.x = x;
         this.y = y;
         this.weight = weight;
     }
 
-
-    addNeighbor(node, distance) {
-        this.neighbors.set(node, distance);
+    addNeighbor(node: Node, distance: number): void {
+        this.neighbors[node.name] = {node, distance};
     }
 
     // Méthode pour obtenir les coordonnées sous forme de string
-    getCoordinates() {
+    getCoordinates(): string {
         return `(${this.x},${this.y})`;
+    }
+
+        toString(): string {
+        return `${this.name} [${this.x},${this.y}] weight:${this.weight}`;
     }
 }
 

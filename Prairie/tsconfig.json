@@ -1,8 +1,18 @@
 {
   "compilerOptions": {
-    "moduleResolution": "nodenext",
-    "module": "NodeNext",
     "target": "ES2020",
-    "esModuleInterop": true
-  }
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "outDir": "./dist",  // Add this - outputs all JS to a dist folder
+    "rootDir": "./",     // Add this - root of your source files
+    "strict": true
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

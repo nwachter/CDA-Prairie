@@ -1,5 +1,5 @@
 
-class Person {
-    public x: number;
-    public y : number;
-}
+// class Person {
+//     public x: number;
+//     public y : number;
+// }
