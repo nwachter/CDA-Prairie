@@ -89,23 +89,33 @@ import { drawMap, randomize } from "./grille.js";
 import { map } from "./grille.js";
 
 
-const carteElement = document.querySelector("#map");
-//const carteElement = document.querySelector("#carte");
-const arthurElement = document.querySelector("#arthur");
-const labyrintheElement = document.querySelector("#labyrinthe");
-const camelotElement = document.querySelector("#camelot");
+// Remove the carteElement from Element constructor - use the map container instead
+const mapContainer = document.querySelector("#map-container") as HTMLElement;
+const arthurElement = document.querySelector("#arthur") as HTMLElement;
+const labyrintheElement = document.querySelector("#labyrinthe") as HTMLElement;
+const camelotElement = document.querySelector("#camelot") as HTMLElement;
 
-if (!carteElement || !arthurElement || !labyrintheElement || !camelotElement) {
+if (!mapContainer || !arthurElement || !labyrintheElement || !camelotElement) {
     throw new Error("Could not find one of the elements");
 }
 
-// On dessine la carte du navigateur
-const imageCarte = new ImageCarte(40, 32, carteElement.getBoundingClientRect());
+// Use simplified ImageCarte without DOMRect
+const imageCarte = new ImageCarte(40, 32);
 
-// On initialise les élements avec la carte
-const arthur = new Element(carteElement as HTMLElement, imageCarte);
-const labyrinthe = new Element(labyrintheElement as HTMLElement, imageCarte);
-const camelot = new Element(camelotElement as HTMLElement, imageCarte);
+// Initialize elements with the map container as reference
+const arthur = new Element(arthurElement, imageCarte);
+const labyrinthe = new Element(labyrintheElement, imageCarte);
+const camelot = new Element(camelotElement, imageCarte);
+
+// Make sure characters are visible by setting initial positions
+setTimeout(() => {
+    arthur.move(arthurPosition.x, arthurPosition.y);
+    if (labyrinthEntrance) {
+        labyrinthe.move(labyrinthEntrance.x, labyrinthEntrance.y);
+    }
+    // Position camelot somewhere visible
+    camelot.move(10, 10);
+}, 100);
 
 // Initialiser la carte Kaamelott
 const kaamelott = new Kaamelott();
@@ -119,14 +129,9 @@ let currentPath: any[] = [];
 const arthurPosition = kaamelott.placeArthur();
 const labyrinthEntrance = kaamelott.labyrinthEntrance;
 
-// Mettre à jour les positions des éléments HTML
-arthur.move(arthurPosition.x, arthurPosition.y);
-if (labyrinthEntrance) {
-    labyrinthe.move(labyrinthEntrance.x, labyrinthEntrance.y);
-}
 
 // Dessiner la carte (grille)
-drawMap();
+//drawMap(); //testerror
 
 // Fonction pour initialiser/réinitialiser l'algorithme
 function initializeAlgorithm(): void {
@@ -187,13 +192,14 @@ function animateArthurAlongPath(path: any[], currentStep: number = 0): void {
     if (currentStep >= path.length) return;
     
     const currentNode = path[currentStep];
-    arthur.move(currentNode.x, currentNode.y);
+    
+    // Use animateTo for smooth movement instead of move
+    arthur.animateTo(currentNode.x, currentNode.y, 200);
     
     setTimeout(() => {
         animateArthurAlongPath(path, currentStep + 1);
-    }, 300); // Vitesse de déplacement d'Arthur
+    }, 250); // Slightly longer delay to see the movement
 }
-
 // Fonction pour mettre à jour les messages de statut
 function updateStatus(message: string, type: 'info' | 'success' | 'error' = 'info'): void {
     let statusElement = document.getElementById('statusMessage');
