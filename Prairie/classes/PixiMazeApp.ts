@@ -1,95 +1,17 @@
-<!DOCTYPE html>
-<html lang="fr">
+       
+       import {Maze} from './MazeGenerator';
+       class PixiMazeApp {
+             public width: number = 42;
+             public height: number = 39;
+            // public app: PIXI.Application;
+             public maze: Maze;
+             public path: Node[];
+             public hero: Node;
+             public cellSize: number;
+             public mazeContainer: ;
+             public pathContainer: PIXI.Container;
+             public heroContainer: PIXI.Container;
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Labyrinthe PixiJS</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.4.2/pixi.min.js"></script>
-
-</head>
-
-<body>
-    <div class="controls">
-        <button id="generateBtn">Nouveau</button>
-        <button id="solveBtn">Résoudre</button>
-        <button id="animateBtn">Animer</button>
-    </div>
-
-    <div id="gameContainer"></div>
-
-    <script>
-
-
-        // Dijkstra Pathfinder
-        function dijkstra(maze) {
-            const dist = {};
-            const prev = {};
-            const unvisited = new Set();
-
-            for (let y = 0; y < maze.height; y++) {
-                for (let x = 0; x < maze.width; x++) {
-                    if (maze.grid[y][x] === 0) {
-                        const key = `${x},${y}`;
-                        dist[key] = Infinity;
-                        prev[key] = null;
-                        unvisited.add(key);
-                    }
-                }
-            }
-
-            const startKey = `${maze.start[0]},${maze.start[1]}`;
-            dist[startKey] = 0;
-
-            while (unvisited.size > 0) {
-                let current = null;
-                let minDist = Infinity;
-
-                for (const node of unvisited) {
-                    if (dist[node] < minDist) {
-                        minDist = dist[node];
-                        current = node;
-                    }
-                }
-
-                if (!current || minDist === Infinity) break;
-
-                unvisited.delete(current);
-                const [cx, cy] = current.split(',').map(Number);
-
-                if (cx === maze.end[0] && cy === maze.end[1]) break;
-
-                for (const [nx, ny] of maze.neighbors(cx, cy)) {
-                    const neighborKey = `${nx},${ny}`;
-                    if (unvisited.has(neighborKey)) {
-                        const alt = dist[current] + 1;
-                        if (alt < dist[neighborKey]) {
-                            dist[neighborKey] = alt;
-                            prev[neighborKey] = current;
-                        }
-                    }
-                }
-            }
-
-            const path = [];
-            let current = `${maze.end[0]},${maze.end[1]}`;
-
-            while (current && prev[current] !== undefined) {
-                const [x, y] = current.split(',').map(Number);
-                path.unshift([x, y]);
-                current = prev[current];
-            }
-
-            if (path.length > 0) {
-                path.unshift(maze.start);
-            }
-
-            return path.length > 0 ? path : null;
-        }
-
-
-        // PixiJS Maze Application
-        class PixiMazeApp {
             constructor() {
                 this.app = new PIXI.Application({
                     width: 600,
@@ -268,12 +190,3 @@
                 this.heroContainer.removeChildren();
             }
         }
-
-        // Start the application
-        document.addEventListener('DOMContentLoaded', () => {
-            new PixiMazeApp();
-        });
-    </script>
-</body>
-
-</html>
