@@ -1,5 +1,7 @@
 import Element from "../classes/Element.js";
 import ImageCarte from "../classes/ImageCarte.js";
+import { Kaamelott } from "../classes/Kaamelott.js";
+import { map } from "../classes/grille/grille.js";
 
 const imageCarteElement = document.querySelector("#carte");
 // On dessine la carte du navigateur
@@ -15,6 +17,7 @@ const camelotElement = document.querySelector("#camelot");
 
 if(!arthurElement || !labyrintheElement || !camelotElement || !imageCarteElement) throw new Error("Could not find one of the elements");
 // On initialise les élements avec la carte
+
 
 
 const arthur = new Element(document.querySelector("#arthur") as HTMLElement, imageCarte);
@@ -37,12 +40,27 @@ button_go.addEventListener("click", handleButtonGo);
 const button_reset = document.querySelector("#button_reset") as HTMLElement;
 button_reset.addEventListener("click", handleButtonReset);
 
+const kaamelott = new Kaamelott();
+    const path = kaamelott.findShortestPathToEntrance();
+
 function handleButtonReset() {
   location.reload();
+
 }
+
+
+
 function handleButtonGo() {
   button_go.style.display = "none";
   button_reset.style.display = "flex";
+        console.log(path);
+}
+
+function getMapValue(x: number, y: number): number {
+    if (y >= 0 && y < 32 && x >= 0 && x < 40) {
+        return map[y][x] || 1; 
+    }
+    return 1; 
 }
 
 // reste à importer la fonction qui gère l'algorithme est qui renvoie une liste de coordonnée 

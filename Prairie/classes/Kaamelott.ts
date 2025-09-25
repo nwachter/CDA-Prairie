@@ -295,6 +295,7 @@
 // export { Kaamelott };
 
 import { Node } from "./Node.js";
+import {map} from "../classes/grille/grille.js";
 
 class Kaamelott {
     public nodes: { [key: string]: Node };
@@ -432,7 +433,7 @@ class Kaamelott {
         return this.arthurPosition;
     }
 
-    findShortestPathToEntrance(): Node[] {
+    findShortestPathToEntrance(fullMap: number[][]): Node[] {
         if (!this.arthurPosition || !this.labyrinthEntrance) {
             console.log("Arthur ou entrée labyrinthe non trouvés !");
             return [];
