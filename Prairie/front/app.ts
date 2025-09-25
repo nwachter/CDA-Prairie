@@ -2,6 +2,7 @@
 import { Maze } from '../classes/MazeGenerator.js';
 import { dijkstra } from '../classes/DijkstraPathfinder.js';
 import { Person } from '../classes/Person.js';
+import { PixiMazeApp } from '../classes/PixiMazeApp.js';
 
 class MazeApp {
     private canvas: HTMLCanvasElement;
@@ -149,6 +150,10 @@ class MazeApp {
 }
 
 // Démarrer l'application
+// document.addEventListener('DOMContentLoaded', () => {
+//     new MazeApp();
+// });
+
 document.addEventListener('DOMContentLoaded', () => {
-    new MazeApp();
+    new PixiMazeApp();
 });
