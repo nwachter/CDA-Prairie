@@ -6,27 +6,28 @@
 - Trouver le chemin le plus court de l'entrée du labyrinthe au trésor
 
 
-# Installation du repository
+## Installation du repository
 Pour que le projet Prairie fonctionne après avoir cloné le dépôt, vos développeurs doivent suivre ces étapes :
 
-1.
-Installer Node.js et npm si ce n'est pas déjà fait
-2.
-Naviguer jusqu'à la racine du repository du projet (allez dans le dossier Prairie) 
-3.
-Installer TypeScript globalement : Cette commande installe le compilateur TypeScript, qui est nécessaire pour compiler les fichiers .ts en fichiers .js.
+1. Installer Node.js et npm si ce n'est pas déjà fait
+
+2. Naviguer jusqu'à la racine du repository du projet (allez dans le dossier Prairie) 
+
+3. FACULTATIF : Installer TypeScript globalement si non fait : Installe le compilateur TypeScript, qui est nécessaire pour compiler les fichiers .ts en fichiers .js.
 ```bash
 npm install -g typescript
 ```
 
-4.
-Installer les définitions de types Node.js : Cette étape installe les définitions de types nécessaires pour Node.js, ce qui résout certaines erreurs de compilation TypeScript liées aux types globaux.
+4. FACULTATIF : Installer les définitions de types Node.js : Cette étape installe les définitions de types nécessaires pour Node.js, ce qui résout certaines erreurs de compilation TypeScript liées aux types globaux.
 ```bash
 npm install --save-dev @types/node
 ```
+5. Installer les packages du package.json :
+```
+npm i
+```
 
-5.
-Vérifier la configuration de tsconfig.json : Assurez-vous que le fichier tsconfig.json situé dans le répertoire CDA-Prairie/Prairie contient les compilerOptions suivantes pour assurer une résolution de module et une compilation appropriées pour un environnement de navigateur :
+6. Vérifier la configuration de tsconfig.json : Assurez-vous que le fichier tsconfig.json situé dans le répertoire CDA-Prairie/Prairie contient les compilerOptions suivantes pour assurer une résolution de module et une compilation appropriées pour un environnement de navigateur :
 
 ```JSON
 {
@@ -39,8 +40,7 @@ Vérifier la configuration de tsconfig.json : Assurez-vous que le fichier tsconf
 }
 ```
 
-6.
-Compiler et servir les fichiers TypeScript : Exécutez le script appelant le compilateur TypeScript puis le serveur, depuis le répertoire CDA-Prairie.
+6. Compiler et servir les fichiers TypeScript : Exécutez le script appelant le compilateur TypeScript puis le serveur, depuis le répertoire CDA-Prairie.
 
 ```bash
 npm run compile_serve
@@ -87,7 +87,7 @@ https://www.geeksforgeeks.org/dsa/dijkstras-shortest-path-algorithm-greedy-algo-
 https://www.datacamp.com/tutorial/a-star-algorithm
 https://www.geeksforgeeks.org/dsa/a-search-algorithm/
 
-# Issues
+# Troubleshooting (en cas de problème)
 Si la compilation rencontre des problèmes, supprimez les fichiers .js transpilés (ou le dossier dist si vous avez choisi ce dossier pour recevoir les fichiers compilés), corrigez l'éventuel problème, et re-compilez/servez.
 ```bash
 npm run clean
