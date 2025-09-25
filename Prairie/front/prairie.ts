@@ -1,15 +1,25 @@
 import Element from "../classes/Element.js";
 import ImageCarte from "../classes/ImageCarte.js";
 
+const imageCarteElement = document.querySelector("#carte");
 // On dessine la carte du navigateur
+
 const colonnes = 40;
 const rows = 32;
 const imageCarte = new ImageCarte(colonnes, rows, document.querySelector("#carte").getBoundingClientRect());
 
+
+const arthurElement = document.querySelector("#arthur");
+const labyrintheElement = document.querySelector("#labyrinthe");
+const camelotElement = document.querySelector("#camelot");
+
+if(!arthurElement || !labyrintheElement || !camelotElement || !imageCarteElement) throw new Error("Could not find one of the elements");
 // On initialise les élements avec la carte
+
 const arthur = new Element(document.querySelector("#arthur"), imageCarte);
 const labyrinthe = new Element(document.querySelector("#labyrinthe"), imageCarte);
 const camelot = new Element(document.querySelector("#camelot"), imageCarte);
+
 
 // Générer aléatoirement emplacement de de camelot et arthur
 const randomX = Math.floor(Math.random() * colonnes);
