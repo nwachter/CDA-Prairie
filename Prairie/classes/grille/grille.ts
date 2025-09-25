@@ -397,3 +397,4 @@ function randomize(): void {
 }
 
 initMap();
+export {map}
