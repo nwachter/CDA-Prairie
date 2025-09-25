@@ -45,13 +45,19 @@
 import Element from "../classes/Element" 
 import ImageCarte from "../classes/ImageCarte";
 
+const imageCarteElement = document.querySelector("#carte");
 // On dessine la carte du navigateur
-const imageCarte = new ImageCarte(40, 32, document.querySelector("#carte").getBoundingClientRect());
+const imageCarte = new ImageCarte(40, 32, imageCarteElement!.getBoundingClientRect());
 
+const arthurElement = document.querySelector("#arthur");
+const labyrintheElement = document.querySelector("#labyrinthe");
+const camelotElement = document.querySelector("#camelot");
+
+if(!arthurElement || !labyrintheElement || !camelotElement || !imageCarteElement) throw new Error("Could not find one of the elements");
 // On initialise les élements avec la carte
-const arthur = new Element(document.querySelector("#arthur"), imageCarte)
-const labyrinthe = new Element(document.querySelector("#labyrinthe"), imageCarte);
-const camelot = new Element(document.querySelector("#camelot"), imageCarte);
+const arthur = new Element(arthurElement as HTMLElement, imageCarte)
+const labyrinthe = new Element(labyrintheElement as HTMLElement, imageCarte);
+const camelot = new Element(camelotElement as HTMLElement, imageCarte);
 
 // position de départ
 
