@@ -6,7 +6,7 @@ const imageCarteElement = document.querySelector("#carte");
 
 const colonnes = 40;
 const rows = 32;
-const imageCarte = new ImageCarte(colonnes, rows, document.querySelector("#carte").getBoundingClientRect());
+const imageCarte = new ImageCarte(colonnes, rows, document.querySelector("#carte")!.getBoundingClientRect());
 
 
 const arthurElement = document.querySelector("#arthur");
@@ -16,9 +16,10 @@ const camelotElement = document.querySelector("#camelot");
 if(!arthurElement || !labyrintheElement || !camelotElement || !imageCarteElement) throw new Error("Could not find one of the elements");
 // On initialise les élements avec la carte
 
-const arthur = new Element(document.querySelector("#arthur"), imageCarte);
-const labyrinthe = new Element(document.querySelector("#labyrinthe"), imageCarte);
-const camelot = new Element(document.querySelector("#camelot"), imageCarte);
+
+const arthur = new Element(document.querySelector("#arthur") as HTMLElement, imageCarte);
+const labyrinthe = new Element(document.querySelector("#labyrinthe") as HTMLElement, imageCarte);
+const camelot = new Element(document.querySelector("#camelot") as HTMLElement, imageCarte);
 
 
 // Générer aléatoirement emplacement de de camelot et arthur
