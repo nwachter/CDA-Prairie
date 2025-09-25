@@ -1,4 +1,4 @@
-import { Maze } from './MazeGenerator';
+import { Maze } from './MazeGenerator.js';
 export function dijkstra(maze: Maze): [number, number][] | null {
     const start = maze.start, end = maze.end;
     const dist  = new Map<string, number>();

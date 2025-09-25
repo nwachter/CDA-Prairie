@@ -1,7 +1,7 @@
 // app.ts - Application simple
-import { Maze } from '../classes/MazeGenerator';
-import { dijkstra } from '../classes/DijkstraPathfinder';
-import { Person } from '../classes/Person';
+import { Maze } from '../classes/MazeGenerator.js';
+import { dijkstra } from '../classes/DijkstraPathfinder.js';
+import { Person } from '../classes/Person.js';
 
 class MazeApp {
     private canvas: HTMLCanvasElement;
