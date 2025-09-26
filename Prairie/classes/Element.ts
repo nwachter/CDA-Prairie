@@ -13,7 +13,7 @@ export default class Element {
     this.carte = carte;
   }
 
-  public move(x: number, y: number) {
+  public move([x, y]: number[]) {
     console.log(x + " " + y);
     this.avatar.style.left = String(x * this.carte.uniteY - 50 + "px");
     this.avatar.style.top = String(y * this.carte.uniteX - 50 + "px");
