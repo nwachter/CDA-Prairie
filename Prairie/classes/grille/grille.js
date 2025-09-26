@@ -201,9 +201,10 @@ function changeCell(x, y) {
 
 // Générer aléatoire
 function randomize() {
+  const colors = [0, 5, 10, 15, 20, 25];
   for (let y = 0; y < 32; y++) {
     for (let x = 0; x < 40; x++) {
-      map[y][x] = Math.floor(Math.random() * 5) + 1;
+      map[y][x] = colors[Math.floor(Math.random() * colors.length)];
     }
   }
   drawMap();
