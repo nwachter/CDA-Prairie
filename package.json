@@ -1,17 +1,21 @@
 {
   "devDependencies": {
-    "@types/node": "^24.5.2",
-    "serve": "^14.2.5"
+    "@types/node": "^20.19.17",
+    "@types/pixi.js": "^4.8.9",
+    "parcel": "^2.16.0",
+    "serve": "^14.2.5",
+    "typescript": "^5.0.0"
   },
   "scripts": {
     "compile": "cd Prairie && tsc",
     "serve": "cd Prairie && npx serve -l 3000 .",
     "compile_serve": "npm run compile && npm run serve",
-    "clean": "cd Prairie && rm -rf dist"
+    "clean": "cd Prairie && rm -rf dist",
+    "dev": "parcel serve Prairie/index.html Prairie/labyrinthGame.html --port 3000 --host localhost",
+    "build": "parcel build Prairie/index.html Prairie/labyrinthGame.html --dist-dir dist --public-url ./"
   },
   "dependencies": {
-    "node": "^24.8.0"
+    "node": "^24.8.0",
+    "pixi.js": "^8.13.2"
   }
-
 }
-
