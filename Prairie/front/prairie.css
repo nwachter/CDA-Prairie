@@ -24,7 +24,7 @@ body {
   border-radius: 5%;
   opacity: 0.5;
   box-shadow: 10px 10px 10px gray;
-  
+
 }
 
 @font-face {
@@ -63,33 +63,33 @@ h1 {
 }
 
 
-#board{
+#board {
   display: flex;
   gap: 32px;
 }
 
-button{
+button {
   height: 100px;
   margin-top: 32px;
 }
 
-#button_go{
+#button_go {
   background-color: brown;
   color: white;
   font-family: fantasy;
   font-weight: bold;
   font-size: 2rem;
   border-radius: 16px;
- padding: 0px 32px;
+  padding: 0px 32px;
 }
 
-#button_go:hover{
+#button_go:hover {
   cursor: pointer;
   background-color: white;
   color: brown;
 }
 
-#button_reset{
+#button_reset {
   width: 100px;
   border-radius: 50px;
   display: none;
@@ -98,13 +98,15 @@ button{
   background-color: brown;
 }
 
-#button_reset:hover{
+#button_reset:hover {
   background-color: white;
 }
 
-#button_reset img{
+#button_reset img {
   height: 50%;
   color: purple;
+
+}
 
 .controls {
   margin-bottom: 20px;
