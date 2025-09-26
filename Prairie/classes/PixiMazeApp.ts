@@ -3,6 +3,7 @@ import * as PIXI from 'pixi.js';
 import { Maze } from '../classes/MazeGenerator.js';
 import { dijkstra } from '../classes/DijkstraPathfinder.js';
 import { Person } from '../classes/Person.js';
+//import { Application, Graphics } from 'https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js';
 
 interface MazeInstance {
     maze: Maze;
